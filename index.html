@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="decorate.css"> 
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <title>Gun List</title>
+</head>
+<body>
+
+    <div id="app">
+
+        <button v-on:click="toggleThink">
+            <span v-if = "showThing">Hide</span>
+            <span v-if = "!showThing">Show</span>
+        </button>
+        <br><br>
+        <div v-show = "showThing">Active</div>
+        <div v-show = "!showThing">Inactive</div>
+        <br>
+
+        <div v-if="showThing">
+            <p> {{testWord}}</p>
+            <a :href="url">Go to github page</a>
+            <ul>
+                <li v-for = "data in datas" :class="{ fav: data.isFav}">
+                    <img :src="data.img" :alt="data.title" height="250" width="500" v-on:mouseover="toggleFav(data)" v-on:mouseleave="toggleFav(data)">
+                    <h3 onclick=alert(this.innerHTML) >Name - {{data.title}}</h3>
+                    <p>Type - {{data.type}}</p>
+                    <p>Des - {{data.description}}</p>
+                   
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
