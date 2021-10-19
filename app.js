@@ -4,6 +4,7 @@ const app = Vue.createApp({
             url: 'https://github.com/iuhggiuhhgbnr',
             showThing: true,
             testWord: "Data list",
+            timeValue: 123,
             datas: [
                 { title: "Computer 1970",           type: "Hardware",   description: "A computer from 1970",      img: 'assets/1.png',isFav:false},
                 { title: "Mouse Razer Mamba 4G",    type: "Hardware",   description: "Gaming mouse",      img: 'assets/2.png',isFav:false},
@@ -11,6 +12,9 @@ const app = Vue.createApp({
                 { title: "Razer Keyboard",          type: "Hardware",   description: "Razer keyboard",      img: 'assets/4.png',isFav:false},
             ],
         }
+    },
+    created() {
+        setInterval(this.currentTime, 1000);
     },
     methods: {
         debugSomehing(){
@@ -24,6 +28,14 @@ const app = Vue.createApp({
         toggleFav(data){
             data.isFav = !data.isFav
         },
+        
+        currentTime(){           
+            var d = new Date();
+            var t = d.toLocaleTimeString(); 
+            this.timeValue = t;          
+        }
+
+
     }
 })
 
